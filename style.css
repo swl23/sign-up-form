@@ -1,6 +1,9 @@
 /* 1. Use a more-intuitive box-sizing model */
 *, *::before, *::after {
 	box-sizing: border-box;
+	--header-footer-colors: #fad7c32f;
+	--text-color: #204857;
+	--label-color: rgb(48, 46, 45);
   }
   
   /* 2. Remove default margin */
@@ -13,6 +16,11 @@
 	line-height: 1.5;
 	/* 4. Improve text rendering */
 	-webkit-font-smoothing: antialiased;
+	font-family: "Inter 28pt";
+	display: flex;
+	font-size: 18px;
+	font-weight: 500;
+	color: var(--text-color);
   }
   
   /* 5. Improve media defaults */
@@ -46,35 +54,170 @@
 	isolation: isolate;
   }
 
-.page-container {
-	display: flex;
+.left-column {
+	background-color: aquamarine;
+	background-image: url("./santa-barbara.jpg");
+	background-size: 350%;
+	flex-grow: 0;
+	flex-shrink: 0;
+	height: 100vh;
+	width: 350px;
+	position: relative;
 }
 
-.left-column {
-	flex: 0 0 auto;
-	background-color: lightblue;
-	width: 400px;
-	height: 100vh
+.card-body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #00000066;
+	position: absolute;
+	left: -350px;
+	width: 350px;
+	gap: 15px;
+}
+
+.card-body > img {
+	width: 17%;
+}
+
+.card-body > p {
+	font-size: 5rem;
+	font-family: "Shuttleblock Narrow Medium";
+	color: white;
 }
 
 .right-column {
 	display: flex;
 	flex-direction: column;
+	flex-grow: 1;
+}
+
+.right-column > * > *:not(.card-body) {
+	margin-left: 50px;
 }
 
 .header, .footer {
-	background-color: antiquewhite;
+	background-color: var(--header-footer-colors);
+}
+
+.header {
+	flex-grow: 2;
+	min-height: 400px;
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+	justify-content: flex-end;
+	position: relative;
+}
+
+.header > p {
+	min-width: 55ch;
+	max-width: 70ch;
+	margin-right: 200px;
+}
+
+.header > p:not(:first-child) {
+	margin-bottom: 50px; 
+}
+
+.footer {
+	flex-grow: 3;
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+.footer > *:first-child {
+	margin-top: 50px;
+}
+
+.middle {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex-grow: 1;
+	min-height: 250px;
+	max-height: 350px;;
+}
+
+.middle > *:first-child {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.middle > *:last-child {
+	margin-bottom: 25px;
 }
 
 .form-box {
 	display: flex;
 	flex-direction: column;
+	width: 60%;
+	max-width: 1000px;
+}
+
+.form-row {
+	display: flex;
+	gap: 50px;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.form-row:not(:last-child) {
+	margin-bottom: 1.3rem;
 }
 
 .entry {
 	display: inline-block;
+	width: 100%;
+	max-width: 450px;
 }
 
-.entry label {
+.entry > * {
 	display: block;
+}
+
+.entry > input {
+	width: 100%;
+	min-width: 200px;
+	height: 2.5rem;
+	border-radius: 8px;
+	border: solid 1px black;
+}
+
+input:focus {
+	outline: solid 2px transparent;
+	border: solid 2px #a08d96;
+	box-shadow: 2px 2px 15px -5px #777777;
+}
+
+.entry > label {
+	text-wrap: nowrap;
+	font-size: 0.7rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	opacity: 0.8;
+	color: var(--label-color);
+}
+
+input[type=button] {
+	height: 50px;
+	width: 200px;
+	border-radius: 8px;
+	border: solid 1px;
+	margin-top: 50px;
+	background-color: #2f4c23c5;
+	color: #ffffff;
+}
+
+input[type=button]:hover {
+	cursor: pointer;
+	background-color: #2f4c231b;
+	border: solid 1px #2f4c23c5;
+	color: #2f4c23c5;
+}
+
+input[type=button]:active {
+	transition: 0.1s;
+	transform: translate(1px, 2px);
 }
